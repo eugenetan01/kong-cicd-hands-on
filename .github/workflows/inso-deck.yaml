@@ -31,21 +31,6 @@ jobs:
           sudo tar -xf inso.tar.xz -C /tmp/
           cp /tmp/inso /usr/local/bin/
 
-      # Install docker-compose
-      - name: Install Compose
-        uses: ndeloof/install-compose-action@v0.0.1
-        with:
-          version: v2.1.0 # defaults to 'latest'
-          legacy: true # will also install in PATH as `docker-compose`
-
-      # Verify docker-compose running
-      - name: Install Compose
-        run: docker-compose --version
-
-      # Run docker-compose
-      - name: Docker-compose - Build the stack
-        run: docker-compose -f ./docker/docker-compose-bankong-combined_local_portchange.yaml up -d
-
       # Run Inso tests // run this if you have a service deployed somewhere to test the test suite against
       - name: Run Inso Tests
         run: |
@@ -78,4 +63,4 @@ jobs:
           KONG_KONNECT_TOKEN: ${{ secrets.KONG_KONNECT_TOKEN }}
         run: |
           echo "Syncing configuration with Konnect..."
-          deck gateway sync ./kong.yaml --konnect-addr https://us.api.konghq.com --konnect-token $KONG_KONNECT_TOKEN --konnect-control-plane-name apiops-demo --select-tag gitops
+          deck gateway sync ./kong.yaml --konnect-addr https://au.api.konghq.com --konnect-token $KONG_KONNECT_TOKEN --konnect-control-plane-name Hands-on workshop --select-tag gitops
