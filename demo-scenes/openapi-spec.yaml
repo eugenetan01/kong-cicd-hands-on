@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: HTTPBin Anything Endpoint
+  description: |
+    The `/anything` endpoint of HTTPBin is a testing endpoint that responds with a JSON representation of the request data.
+  version: 1.0.0
+
+servers:
+  - url: https://sfp8q4jp-8000.asse.devtunnels.ms
+    description: HTTPBin Public API
+
+paths:
+  /proxy:
+    get:
+      summary: Retrieve Request Information
+      description: Returns details of the request, including headers, query parameters, and more.
+      operationId: getAnything
+      parameters:
+        - name: query
+          in: query
+          description: Any query parameter to include in the request.
+          required: false
+          schema:
+            type: string
+      security:
+        - ApiKeyAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    description: Query parameters included in the request.
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    description: Headers included in the request.
+                  origin:
+                    type: string
+                    description: The origin IP of the client.
+                  url:
+                    type: string
+                    description: The URL of the request.
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
