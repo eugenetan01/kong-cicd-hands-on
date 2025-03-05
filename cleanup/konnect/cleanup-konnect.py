@@ -16,9 +16,9 @@ HEADERS = {
     "accept": "*/*"
 }
 
-def delete_resources(resource_type: str) -> int:
+def delete_gitops_resources(resource_type: str) -> int:
     """
-    Delete all resources of a given type (services or routes) from Konnect.
+    Delete all resources of a given type (services or routes) that have the tag 'gitops'.
     """
     try:
         with httpx.Client() as client:
@@ -32,15 +32,16 @@ def delete_resources(resource_type: str) -> int:
             resources = response.json().get("data", [])
             deleted_count = 0
 
-            # Delete each resource
+            # Filter and delete resources with the tag 'gitops'
             for resource in resources:
-                resource_id = resource["id"]
-                delete_response = client.delete(f"{endpoint}/{resource_id}", headers=HEADERS)
-                if delete_response.status_code == 204:
-                    print(f"Deleted {resource_type[:-1]} ID {resource_id}")
-                    deleted_count += 1
-                else:
-                    print(f"Failed to delete {resource_type[:-1]} ID {resource_id}: {delete_response.text}")
+                if "tags" in resource and "gitops" in resource["tags"]:
+                    resource_id = resource["id"]
+                    delete_response = client.delete(f"{endpoint}/{resource_id}", headers=HEADERS)
+                    if delete_response.status_code == 204:
+                        print(f"Deleted {resource_type[:-1]} ID {resource_id} with tag 'gitops'")
+                        deleted_count += 1
+                    else:
+                        print(f"Failed to delete {resource_type[:-1]} ID {resource_id}: {delete_response.text}")
 
             return deleted_count
     except Exception as e:
@@ -49,23 +50,23 @@ def delete_resources(resource_type: str) -> int:
 
 def main():
     """
-    Main function to delete all services and routes.
+    Main function to delete only resources with the 'gitops' tag.
     """
     if not API_BASE_URL or not CONTROL_PLANE_ID or not AUTH_TOKEN:
         print("Error: Missing API_BASE_URL, CONTROL_PLANE_ID, or AUTH_TOKEN in the environment.")
         return
 
-    print("Starting cleanup process...")
+    print("Starting cleanup process for 'gitops' tagged resources...")
 
-    # Delete all routes
-    routes_deleted = delete_resources("routes")
-    print(f"Deleted {routes_deleted} routes.")
+    # Delete only routes with 'gitops' tag
+    routes_deleted = delete_gitops_resources("routes")
+    print(f"Deleted {routes_deleted} 'gitops' tagged routes.")
 
-    # Delete all services
-    services_deleted = delete_resources("services")
-    print(f"Deleted {services_deleted} services.")
+    # Delete only services with 'gitops' tag
+    services_deleted = delete_gitops_resources("services")
+    print(f"Deleted {services_deleted} 'gitops' tagged services.")
 
-    print("Cleanup process completed.")
+    print("Cleanup process for 'gitops' tagged resources completed.")
 
 if __name__ == "__main__":
     main()
