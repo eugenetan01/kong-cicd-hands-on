@@ -1,0 +1,31 @@
+_id: req_8bf0d45601854a7d90583a80f69a12ee
+type: Request
+parentId: fld_6bf79b98b16546319edae9358e977751
+modified: 1741160228661
+created: 1741160144565
+url: "{{ _.host }}/anything"
+name: Retrieve Request Information
+description: Returns details of the request, including headers, query parameters, and more.
+method: GET
+body: {}
+parameters:
+  - name: query
+    disabled: true
+    value: string
+headers: []
+authentication:
+  type: apikey
+  key: apikey
+  value: "{{ _.apikey }}"
+  addTo: header
+preRequestScript: null
+metaSortKey: -1741160144565
+isPrivate: false
+pathParameters: []
+afterResponseScript: null
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

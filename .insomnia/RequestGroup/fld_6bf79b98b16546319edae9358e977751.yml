@@ -1,13 +1,13 @@
-_id: fld_0e80579e4264462ba5c6683c055eaefd
+_id: fld_6bf79b98b16546319edae9358e977751
 type: RequestGroup
 parentId: wrk_03837bb6835248c580142b800330c851
-modified: 1730958511889
-created: 1730958511889
-name: Transactions
-description: Everything about transactions
+modified: 1741160144564
+created: 1741160144564
+name: Example
+description: Endpoints related to testing with HTTPBin.
 environment: {}
 environmentPropertyOrder: null
-metaSortKey: -1730958511889
+metaSortKey: -1741160144564
 preRequestScript: null
 afterResponseScript: null
 authentication: null
