@@ -1,0 +1,15 @@
+_id: env_3ed216f80ebb4ed292d07b880f22223b
+type: Environment
+parentId: env_eeffcb9184b1ab85e651a6e3be6fee9c32521ebe
+modified: 1741160144564
+created: 1741160144564
+name: OpenAPI env sfp8q4jp-8000.asse.devtunnels.ms
+data:
+  scheme: https
+  base_path: ""
+  host: sfp8q4jp-8000.asse.devtunnels.ms
+  apikey: apikey
+dataPropertyOrder: null
+color: null
+isPrivate: false
+metaSortKey: 1741160144564
