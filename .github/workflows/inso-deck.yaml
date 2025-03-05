@@ -3,10 +3,7 @@ name: Run Inso and Deck with Konnect
 on:
   push:
     branches:
-      - dev
-  pull_request:
-    branches:
-      - main
+      - master
 
 jobs:
   inso-and-deck:
