@@ -12,15 +12,6 @@ add-plugins:
       - name: rate-limiting-advanced
         enabled: true
         config:
-          limits:
-            minute:
-              quantity: 5
-          sync_rate: -1
-        tags: ["gitops-eug"]
-
-      - name: rate-limiting-advanced
-        enabled: true
-        config:
           limit:
             - 5
           window_size:
