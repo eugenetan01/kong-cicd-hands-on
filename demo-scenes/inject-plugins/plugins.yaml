@@ -60,10 +60,3 @@ add-plugins:
           window_size:
             - 60
           window_type: sliding
-          enabled: true
-          name: rate-limiting-advanced
-          protocols:
-            - grpc
-            - grpcs
-            - http
-            - https
