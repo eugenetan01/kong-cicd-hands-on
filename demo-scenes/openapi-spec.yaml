@@ -10,7 +10,7 @@ servers:
     description: HTTPBin Public API
 
 paths:
-  /proxy:
+  /anything:
     get:
       summary: Retrieve Request Information
       description: Returns details of the request, including headers, query parameters, and more.
