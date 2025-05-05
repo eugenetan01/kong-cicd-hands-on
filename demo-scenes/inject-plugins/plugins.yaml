@@ -10,7 +10,16 @@ add-plugins:
         tags: ["gitops-eug"]
 
       - name: rate-limiting-advanced
-        service: SERVICE_NAME|ID
+        enabled: true
+        config:
+          limits:
+            minute:
+              quantity: 5
+          sync_rate: -1
+        tags: ["gitops-eug"]
+
+      - name: rate-limiting-advanced
+        enabled: true
         config:
           limit:
             - 5
@@ -21,3 +30,4 @@ add-plugins:
           namespace: example_namespace
           strategy: local
           hide_client_headers: false
+          tags: ["gitops-eug"]
