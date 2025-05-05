@@ -17,6 +17,7 @@ add-plugins:
           window_size:
             - 30
           identifier: consumer
+          dictionary_name: kong_rate_limiting_counters
           sync_rate: -1
           namespace: example_namespace
           strategy: local
