@@ -6,7 +6,7 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://ec2-47-128-221-89.ap-southeast-1.compute.amazonaws.com:8000
+  - url: http://httpbin.org
     description: HTTPBin Public API
 
 paths:
