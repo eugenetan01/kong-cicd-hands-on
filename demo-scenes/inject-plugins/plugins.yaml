@@ -23,4 +23,5 @@ add-plugins:
           strategy: local
           window_type: sliding
           hide_client_headers: false
+          lock_dictionary_name: kong_locks
           tags: ["gitops-eug"]
