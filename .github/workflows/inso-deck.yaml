@@ -41,6 +41,10 @@ jobs:
       - name: Generate Kong declarative configuration from Spec
         run: deck file openapi2kong --spec ./demo-scenes/openapi-spec.yaml --output-file ./kong.yaml --select-tag gitops-eug
 
+      # Inject Plugins
+      - name: Add custom plugin + basic auth plugin
+        run: deck file add-plugins -s ./kong.yaml -o ./kong.yaml ./demo-scenes/inject-plugins/plugins.yaml
+
       # Optional: Validate Configuration with Deck for Konnect
       - name: Validate Configuration with Deck for Konnect
         run: |

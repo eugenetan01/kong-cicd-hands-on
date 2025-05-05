@@ -1,0 +1,19 @@
+add-plugins:
+  - selectors:
+      - $..services[*]
+    overwrite: false
+    plugins:
+      - name: key-auth
+        enabled: true
+        config:
+          hide_credentials: true
+        tags: ["gitops-eug"]
+
+      - name: rate-limiting-advanced
+        enabled: true
+        config:
+          limits:
+            minute:
+              quantity: 5
+          sync_rate: -1
+        tags: ["gitops-eug"]
