@@ -29,5 +29,6 @@ add-plugins:
           sync_rate: -1
           namespace: example_namespace
           strategy: local
+          window_type: sliding
           hide_client_headers: false
           tags: ["gitops-eug"]
