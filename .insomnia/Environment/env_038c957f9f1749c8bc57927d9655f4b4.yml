@@ -8,7 +8,7 @@ data:
   scheme: http
   base_path: ""
   host: http://ec2-47-128-221-89.ap-southeast-1.compute.amazonaws.com:8000
-  apikey: apikey
+  apikey: demokey
   bearerToken: bearerToken
   base_url: "{{ _.host }}"
   id: b88f7029-fa93-41a5-9462-4884e544bf63
